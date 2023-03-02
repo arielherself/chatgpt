@@ -2,7 +2,6 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
         <style type="text/css">
             @font-face {
@@ -123,7 +122,7 @@
         $('html,body').animate({scrollTop: $(`#dl${stat}`).offset().top}, 500);
         let json = {"key": $("#server_key").val(), "prompts": prompts};
         json["prompts"].push({"role": "user", "content": current_prompt});
-        $.post(`http://${$("#server_addr").val()}:${$("#server_port").val()}`, JSON.stringify(json), function(result){
+        $.post(`http://${$("#server_addr").val()}:${$("#server_port").val()}/`, JSON.stringify(json), function(result){
             if (prompts.length >=20) {
                 prompts = prompts.slice(1);
             }
