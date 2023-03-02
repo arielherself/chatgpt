@@ -117,7 +117,7 @@
         $("#chat").append('</p>');
         $('html,body').animate({scrollTop:$(`#dl${stat}`).offset().top})
         $("#chat").append(`<p id="dl${++stat}"><div class="mdui-chip"><span class="mdui-chip-icon">AI</span><span class="mdui-chip-title">ChatGPT</span></div>`);
-        $("#chat").append(`<div id="dl${++stat}" style="display: inline;"><div class="mdui-spinner"></div></div>`)
+        $("#chat").append(`<div id="dl${++stat}" style="display: inline;">请稍候...</div>`)
         $("#chat").append('</p>');
         $('html,body').animate({scrollTop: $(`#dl${stat}`).offset().top}, 500);
         let json = {"key": $("#server_key").val(), "prompts": prompts};
@@ -128,8 +128,8 @@
             }
             prompts.push({"role": "assistant", "content": result["message"]});
             $(`#dl${stat}`).html(result["message"]);
+            $("#send").prop("disabled", false);
         });
-        $("#send").prop("disabled", false);
     });
 </script>
 </body>
